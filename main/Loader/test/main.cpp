@@ -5,7 +5,6 @@
 
 using namespace RayWorm::Loader;
 
-namespace LoaderTest {
 class LoaderTest : public ::testing::Test {
 protected:
     LoaderTest() {}
@@ -23,8 +22,6 @@ protected:
 
 TEST_F(LoaderTest, loadAsset) {
     EXPECT_EQ(0, 0);
-}
-
 }
 
 int main(int argc, char **argv) {

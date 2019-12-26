@@ -11,3 +11,6 @@ message("root" ${CMAKE_SOURCE_DIR})
 
 subdirs(main/Loader)
 subdirs(main/Loader/test)
+
+subdirs(main/Scene)
+subdirs(main/Scene/test)
