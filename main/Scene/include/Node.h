@@ -13,7 +13,7 @@ namespace Scene {
 class Node {
 public:
     Node(const std::string& nm) : name(nm) {}
-    ~Node() {}
+    virtual ~Node() {}
 
     void addChild(Node& node);
 

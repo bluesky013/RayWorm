@@ -8,6 +8,8 @@ include_directories(src)
 
 set(SceneSrc
     src/Node.cpp
+    src/Camera.cpp
+    src/Shape.cpp
 )
 
 set(SceneInc

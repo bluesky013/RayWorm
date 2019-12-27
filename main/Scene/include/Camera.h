@@ -1,24 +1,39 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include <glm/glm.hpp>
 #include <vector>
+#include <Node.h>
+#include <Basic.h>
 
 namespace RayWorm {
 namespace Scene {
 
-class Camera {
+class Camera : public Node {
 public:
-    Camera() {}
+    enum Mode {
+        PERSPECITVE,
+        ORTHOGONAL
+    };
+
+    Camera(const std::string& name) : Node(name) {}
     ~Camera() {}
 
-    void lookAt(const glm::vec3& target);
+    void setMode(Mode m) { mode = m; }
+
+    void updateViewport(Real w, Real h) { width = w; height = h; }
+
+    glm::mat4 getProjectMatrix() const;
+
+    glm::mat4 getViewMatrix() const;
 
 private:
-    float fov = 60.f;
-    float near = 0.1f;
-    float far = 100.f;
-    float aspect = 3.f / 4.f;
+    Real fov = 60.f;
+    Real near = 0.1f;
+    Real far = 100.f;
+    Real aspect = 3.f / 4.f;
+    Real width = 1.f;
+    Real height = 1.f;
+    Mode mode = PERSPECITVE;
 };
 
 }
