@@ -6,7 +6,7 @@
 #include <Loader.h>
 
 namespace RayWorm {
-namespace Loader {
+namespace Scene {
 
 class GltfLoader : public Loader {
 public:

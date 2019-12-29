@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(Scene)
 
+include_directories(${RayRoot}/3rd/tinygltf)
 include_directories(${RayRoot}/3rd/tinygltf/examples/common/glm)
 
 include_directories(${RayRoot}/main/Common/include)

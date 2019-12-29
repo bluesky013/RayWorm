@@ -5,7 +5,7 @@
 using namespace tinygltf;
 
 namespace RayWorm {
-namespace Loader {
+namespace Scene {
 
 
 bool GltfLoader::load(const std::string& url, const std::string& ext)

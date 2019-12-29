@@ -6,18 +6,18 @@
 #include <string>
 
 namespace RayWorm {
-namespace Loader {
+namespace Scene {
 
 class Loader {
 public:
-    virtual ~Loader() {}
-
     static Loader* loadAsset(const std::string& url);
 
     virtual bool load(const std::string& url, const std::string& ext) = 0;
 
 protected:
+    friend struct std::default_delete<Loader>;
     Loader() {}
+    virtual ~Loader() {}
 };
 
 }

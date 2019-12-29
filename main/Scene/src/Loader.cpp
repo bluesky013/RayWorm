@@ -5,7 +5,7 @@
 #include <tiny_gltf.h>
 
 namespace RayWorm {
-namespace Loader {
+namespace Scene {
 
 Loader* Loader::loadAsset(const std::string& url)
 {
