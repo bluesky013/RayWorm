@@ -2,14 +2,11 @@
 #define SINGLETON_H
 
 #include <stdexcept>
+#include <atomic>
 
 namespace RayWorm {
 namespace Common {
 
-
-/**
- * Singleton base, no multi-thread safe.
- */
 template<typename T>
 class Singleton {
 public:
