@@ -1,8 +1,11 @@
 
 
 #include <gtest/gtest.h>
+#include <Basic.h>
 #include <Node.h>
 #include <Shape.h>
+#include <Buffer.h>
+#include <Primitive.h>
 
 using namespace RayWorm::Scene;
 
@@ -12,12 +15,15 @@ protected:
     ~SceneTest() override {}
 
     void SetUp() override {
-
+        bfBuilder = std::make_unique<BufferBuilder>();
+        pmBuilder = std::make_unique<PrimitiveBuilder>();
     }
 
     void TearDown() override {
-
     }
+
+    std::unique_ptr<BufferBuilder> bfBuilder;
+    std::unique_ptr<PrimitiveBuilder> pmBuilder;
 };
 
 TEST_F(SceneTest, NodeTes1) {
@@ -87,6 +93,17 @@ TEST_F(SceneTest, ShapeTest1) {
     EXPECT_EQ(box1.isInside(pt8), true);
     EXPECT_EQ(box1.isInside(pt9), false);
 
+}
+
+TEST_F(SceneTest, BufferTest1) {
+    int p[] = { 1, 2, 3 };
+    BufferPtr bf = BufferBuilder::getSingleton().CreateBuffer(sizeof(p));
+    bf->setData(reinterpret_cast<char*>(p), sizeof(p));
+    const char* pc = bf->getData();
+    const int* pi = reinterpret_cast<const int*>(pc);
+    EXPECT_EQ(pi[0], 1);
+    EXPECT_EQ(pi[1], 2);
+    EXPECT_EQ(pi[2], 3);
 }
 
 int main(int argc, char **argv) {

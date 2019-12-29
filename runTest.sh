@@ -2,6 +2,11 @@
 
 Root=$(pwd)
 
+CommonTestDir=${Root}/build/main/Common/test/Debug
+cd ${CommonTestDir}
+./CommonTest
+cd ${Root}
+
 LoaderTestDir=${Root}/build/main/Loader/test/Debug
 
 cd ${LoaderTestDir}

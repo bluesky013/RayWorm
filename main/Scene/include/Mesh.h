@@ -2,15 +2,15 @@
 #define OBJECT_H
 
 #include <Node.h>
-#include <Geometry.h>
+#include <Primitive.h>
 
 namespace RayWorm {
 namespace Scene {
 
-class Object : public Node {
+class Mesh : public Node {
 public:
-    Object(const std::string& name) : Node(name) {}
-    ~Object() {}
+    Mesh(const std::string& name) : Node(name) {}
+    ~Mesh() {}
 
 private:
     

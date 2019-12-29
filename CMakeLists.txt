@@ -14,3 +14,6 @@ subdirs(main/Loader/test)
 
 subdirs(main/Scene)
 subdirs(main/Scene/test)
+
+subdirs(main/Common)
+subdirs(main/Common/test)

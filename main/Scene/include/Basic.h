@@ -3,6 +3,8 @@
 #ifndef BASIC_H
 #define BASIC_H
 
+#include <vector>
+
 namespace RayWorm {
 namespace Scene {
 
@@ -12,6 +14,11 @@ namespace Scene {
 #define Real float
 #endif
 
+class Buffer;
+using BufferPtr = std::shared_ptr<Buffer>;
+
+class Primitive;
+using PrimitivePtr = std::shared_ptr<Primitive>;
 
 
 }
