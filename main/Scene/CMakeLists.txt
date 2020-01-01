@@ -15,6 +15,8 @@ set(SceneSrc
     src/RayShape.cpp
     src/RayBuffer.cpp
     src/RayPrimitive.cpp
+    src/RayLoader.cpp
+    src/RayMesh.cpp
     src/GltfLoader.cpp
 )
 

@@ -20,7 +20,6 @@ using BufferPtr = std::shared_ptr<Buffer>;
 class Primitive;
 using PrimitivePtr = std::shared_ptr<Primitive>;
 
-
 }
 }
 

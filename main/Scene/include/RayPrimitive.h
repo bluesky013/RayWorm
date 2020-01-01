@@ -6,10 +6,12 @@
 #include <vector>
 #include <RayShape.h>
 #include <RaySingleton.h>
+#include <RayBuffer.h>
 
 namespace RayWorm {
 namespace Scene {
 class PrimitiveBuilder;
+struct BufferAccessor;
 
 class Primitive {
 public:
@@ -21,42 +23,43 @@ public:
         UV1,
         COLOR,
         JOINTS,
-        WEIGHT
+        WEIGHT,
+        MAX
     };
 
     /**
      * add attributes of primitive.
      */
-    Primitive& setAttribute(AttributeType type, char* data, size_t size);
+    Primitive& setAttribute(AttributeType type, const BufferAccessor& accessor);
 
     /**
      * set indices of the buffers.
      */
-    Primitive& setIndices(char* data, size_t size);
+    Primitive& setIndices(const BufferAccessor& accessor);
 
     /**
      * If set bounding box, primitive will not update bounding box automatically.
     */
-    Primitive& setBounding(const Box& box);
-
-    void update();
+    Primitive& buildBoundingBox();
 
 protected:
-    Primitive(PrimitiveBuilder& pb) : builder(pb) {}
+    Primitive(PrimitiveBuilder& pb);
     ~Primitive() {}
 
     friend struct std::default_delete<Primitive>;
     friend class PrimitiveBuilder;
 private:
+    using BufferAccessorPtr = std::unique_ptr<BufferAccessor>;
+
     PrimitiveBuilder& builder;
-    std::vector<BufferPtr> attributes;
-    std::vector<uint32_t> indices;
-    Box bounding;
+    std::vector<BufferAccessorPtr> attributes;
+    BufferAccessorPtr indices;
+    Box boundingBox;
 };
 
 class PrimitiveBuilder : public Common::Singleton<PrimitiveBuilder> {
 public:
-     BufferPtr CreateBuffer(size_t size);
+     PrimitivePtr CreatePrimitive();
 private:
      std::vector<PrimitivePtr> primitiveCache;
 };

@@ -6,6 +6,8 @@
 #include <RayShape.h>
 #include <RayBuffer.h>
 #include <RayPrimitive.h>
+#include <RayMesh.h>
+#include <RayLoader.h>
 
 using namespace RayWorm::Scene;
 
@@ -98,12 +100,21 @@ TEST_F(SceneTest, ShapeTest1) {
 TEST_F(SceneTest, BufferTest1) {
     int p[] = { 1, 2, 3 };
     BufferPtr bf = BufferBuilder::getSingleton().CreateBuffer(sizeof(p));
-    bf->setData(reinterpret_cast<char*>(p), sizeof(p));
-    const char* pc = bf->getData();
+    bf->setData(reinterpret_cast<unsigned char*>(p));
+    const unsigned char* pc = bf->getData();
     const int* pi = reinterpret_cast<const int*>(pc);
     EXPECT_EQ(pi[0], 1);
     EXPECT_EQ(pi[1], 2);
     EXPECT_EQ(pi[2], 3);
+}
+
+TEST_F(SceneTest, GltfTest1) {
+    Loader* loader = Loader::loadAsset("scene.gltf");
+    EXPECT_NE(loader, nullptr);
+
+    Mesh mesh("");
+    loader->instantiateMesh("", mesh);
+
 }
 
 int main(int argc, char **argv) {

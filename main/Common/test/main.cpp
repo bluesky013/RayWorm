@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "SingletonTest.h"
+#include <RayLog.h>
 
 namespace RayWorm {
 namespace Common {
@@ -60,6 +61,10 @@ TEST_F(CommonTest, SingletonTest3) {
         EXPECT_EQ(strcmp(e.what(), "Singleton can not instance twice."), 0);
     }
     EXPECT_EQ(cat, true);
+}
+
+TEST_F(CommonTest, LogTest1) {
+    LogManager::logPrint(LogManager::Level::INFO, "test", "my string");
 }
 
 

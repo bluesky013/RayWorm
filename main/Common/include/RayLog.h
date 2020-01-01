@@ -1,13 +1,12 @@
 #ifndef RAYWORM_LOG_H
 #define RAYWORM_LOG_H
 
-#include <RaySingleton.h>
 #include <string>
 
 namespace RayWorm {
 namespace Common {
 
-class LogManager : public Singleton<LogManager> {
+class LogManager {
 public:
     enum class Level : uint8_t {
         INFO,

@@ -3,14 +3,18 @@
 #define RAY_DEBUG_H
 
 #include <RayLog.h>
+#include <string>
 
 namespace RayWorm {
 namespace Scene {
 
 
-#define logPrintInfo(tag, data) \
-    Common::LogManager::logPrint(Common::LogManager::Level::INFO, tag, data)
-
+#define LOG_PRINT_INFO(tag, ...) \
+{\
+    char str[100];\
+    sprintf(str, __VA_ARGS__);\
+    Common::LogManager::logPrint(Common::LogManager::Level::INFO, tag, str);\
+}
 }
 }
 

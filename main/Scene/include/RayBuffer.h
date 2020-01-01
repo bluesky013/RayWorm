@@ -10,13 +10,15 @@ namespace RayWorm {
 namespace Scene {
 class BufferBuilder;
 
-using Memory = std::vector<char>;
+using Memory = std::vector<uint8_t>;
 
 class Buffer {
 public:
-    const char* getData() const { return data.data(); }
+    void setData(const uint8_t* dt);
 
-    void setData(char* dt, size_t size);
+    const uint8_t* getData() const { return data.data(); }
+
+    size_t getBufferSize() const { return data.size(); }
 
 protected:
     Buffer(BufferBuilder& fct, size_t size);
@@ -37,6 +39,35 @@ public:
 
 private:
     std::vector<BufferPtr> bufferCache;
+};
+
+struct BufferAccessor {
+    enum class CompType : uint8_t {
+        BYTE   = 0,
+        UBYTE  = 1,
+        SHORT  = 2,
+        USHORT = 3,
+        INT    = 4,
+        UINT   = 5,
+        FLOAT  = 6,
+        DOUBLE = 7
+    };
+
+    enum class DataType : uint8_t {
+        SCALAR = 0,
+        VEC2   = 1,
+        VEC3   = 2,
+        VEC4   = 3,
+        MAT2   = 4,
+        MAT3   = 5,
+        MAT4   = 6
+    };
+    BufferPtr buffer;
+    CompType compType;
+    DataType dataType;
+    size_t count;
+    
+    static uint8_t getDataElementsCount(DataType type);
 };
 
 

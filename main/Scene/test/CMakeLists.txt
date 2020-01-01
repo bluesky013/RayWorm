@@ -20,5 +20,6 @@ add_executable(SceneTest ${SceneTestSrc}
 
 target_link_libraries(SceneTest
     Scene
+    Common
     ${GTestLib}
 )
