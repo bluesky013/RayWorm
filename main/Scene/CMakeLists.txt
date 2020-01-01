@@ -10,17 +10,16 @@ include_directories(include)
 include_directories(src)
 
 set(SceneSrc
-    src/Node.cpp
-    src/Camera.cpp
-    src/Shape.cpp
-    src/Buffer.cpp
-    src/Primitive.cpp
+    src/RayNode.cpp
+    src/RayCamera.cpp
+    src/RayShape.cpp
+    src/RayBuffer.cpp
+    src/RayPrimitive.cpp
+    src/GltfLoader.cpp
 )
 
 set(SceneInc
-    include/Camera.h
-    include/Geometry.h
-    include/Node.h
+
 )
 
 add_library(Scene STATIC

@@ -1,5 +1,5 @@
 
-#include <Node.h>
+#include <RayNode.h>
 
 namespace RayWorm {
 namespace Scene {

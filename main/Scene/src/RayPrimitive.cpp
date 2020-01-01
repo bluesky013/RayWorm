@@ -1,10 +1,10 @@
 
-#include <Primitive.h>
+#include <RayPrimitive.h>
 
 namespace RayWorm {
 namespace Scene {
 
-Primitive& Primitive::setAttribute(char* data, size_t size)
+Primitive& Primitive::setAttribute(AttributeType type, char* data, size_t size)
 {
     return *this;
 }

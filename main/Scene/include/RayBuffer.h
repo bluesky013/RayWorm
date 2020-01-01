@@ -1,10 +1,10 @@
-#ifndef BUFFER_H
-#define BUFFER_H
+#ifndef RAY_BUFFER_H
+#define RAY_BUFFER_H
 
-#include <Basic.h>
+#include <RayBasic.h>
 #include <vector>
 #include <memory>
-#include <Singleton.h>
+#include <RaySingleton.h>
 
 namespace RayWorm {
 namespace Scene {

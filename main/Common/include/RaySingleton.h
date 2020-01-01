@@ -1,5 +1,5 @@
-#ifndef SINGLETON_H
-#define SINGLETON_H
+#ifndef RAYWORM_SINGLETON_H
+#define RAYWORM_SINGLETON_H
 
 #include <stdexcept>
 #include <atomic>

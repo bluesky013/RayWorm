@@ -1,6 +1,6 @@
 
 
-#include <Loader.h>
+#include <RayLoader.h>
 #include <GltfLoader.h>
 #include <tiny_gltf.h>
 

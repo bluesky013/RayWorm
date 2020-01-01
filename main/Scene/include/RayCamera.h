@@ -1,9 +1,9 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef RAY_CAMERA_H
+#define RAY_CAMERA_H
 
 #include <vector>
-#include <Node.h>
-#include <Basic.h>
+#include <RayNode.h>
+#include <RayBasic.h>
 
 namespace RayWorm {
 namespace Scene {

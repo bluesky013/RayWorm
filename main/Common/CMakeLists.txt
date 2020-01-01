@@ -6,7 +6,8 @@ include_directories(include)
 include_directories(src)
 
 set(CommonSrc
-    src/Test.cpp
+    src/RayLog.cpp
+    src/RayTime.cpp
 )
 
 set(CommonInc

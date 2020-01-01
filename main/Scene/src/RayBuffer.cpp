@@ -1,5 +1,6 @@
-#include <Buffer.h>
+#include <RayBuffer.h>
 #include <exception>
+#include <RayLog.h>
 
 namespace RayWorm {
 namespace Scene {

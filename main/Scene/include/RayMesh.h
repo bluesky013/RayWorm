@@ -1,8 +1,8 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef RAY_MESH_H
+#define RAY_MESH_H
 
-#include <Node.h>
-#include <Primitive.h>
+#include <RayNode.h>
+#include <RayPrimitive.h>
 
 namespace RayWorm {
 namespace Scene {

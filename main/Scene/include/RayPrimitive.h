@@ -1,11 +1,11 @@
-#ifndef GEOMETRY_H
-#define GEOMETRY_H
+#ifndef RAY_GEOMETRY_H
+#define RAY_GEOMETRY_H
 
-#include <Basic.h>
+#include <RayBasic.h>
 #include <glm/glm.hpp>
 #include <vector>
-#include <Shape.h>
-#include <Singleton.h>
+#include <RayShape.h>
+#include <RaySingleton.h>
 
 namespace RayWorm {
 namespace Scene {
@@ -13,10 +13,21 @@ class PrimitiveBuilder;
 
 class Primitive {
 public:
+    enum AttributeType : uint8_t {
+        POSITION = 0,
+        NORMAL,
+        TANGENT,
+        UV0,
+        UV1,
+        COLOR,
+        JOINTS,
+        WEIGHT
+    };
+
     /**
      * add attributes of primitive.
      */
-    Primitive& setAttribute(char* data, size_t size);
+    Primitive& setAttribute(AttributeType type, char* data, size_t size);
 
     /**
      * set indices of the buffers.
@@ -38,7 +49,7 @@ protected:
     friend class PrimitiveBuilder;
 private:
     PrimitiveBuilder& builder;
-    std::vector<BufferPtr> buffers;
+    std::vector<BufferPtr> attributes;
     std::vector<uint32_t> indices;
     Box bounding;
 };

@@ -2,7 +2,7 @@
 #define SHAPE_H
 
 #include <glm/glm.hpp>
-#include <Basic.h>
+#include <RayBasic.h>
 
 namespace RayWorm {
 namespace Scene {

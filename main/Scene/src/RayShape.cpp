@@ -1,6 +1,6 @@
 
 
-#include <Shape.h>
+#include <RayShape.h>
 
 
 namespace RayWorm {

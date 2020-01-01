@@ -1,7 +1,7 @@
 
 
-#ifndef BASIC_H
-#define BASIC_H
+#ifndef RAY_BASIC_H
+#define RAY_BASIC_H
 
 #include <vector>
 

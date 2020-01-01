@@ -1,11 +1,11 @@
 
 
 #include <gtest/gtest.h>
-#include <Basic.h>
-#include <Node.h>
-#include <Shape.h>
-#include <Buffer.h>
-#include <Primitive.h>
+#include <RayBasic.h>
+#include <RayNode.h>
+#include <RayShape.h>
+#include <RayBuffer.h>
+#include <RayPrimitive.h>
 
 using namespace RayWorm::Scene;
 

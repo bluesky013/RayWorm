@@ -1,7 +1,7 @@
 #ifndef SINGLETON_TEST_H
 #define SINGLETON_TEST_H
 
-#include <Singleton.h>
+#include <RaySingleton.h>
 
 namespace RayWorm {
 namespace Common {
