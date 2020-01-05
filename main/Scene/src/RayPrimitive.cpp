@@ -27,11 +27,10 @@ Primitive& Primitive::setIndices(const BufferAccessor& accessor)
     return *this;
 }
 
-Primitive& Primitive::buildBoundingBox()
+Primitive& Primitive::buildPrimitive()
 {
     if (attributes[static_cast<size_t>(AttributeType::POSITION)]) {
         BufferAccessor* accessor = attributes[static_cast<size_t>(AttributeType::POSITION)].get();
-        LOG_PRINT_INFO(TAG, "datatype:%d, compType:%d, count:%zu", accessor->dataType,accessor->compType, accessor->count);
         if (accessor->compType == BufferAccessor::CompType::FLOAT) {
             std::vector<float> vtx(accessor->buffer->getBufferSize() / sizeof(float));
             memcpy(vtx.data(), accessor->buffer->getData(), accessor->buffer->getBufferSize());
@@ -55,10 +54,13 @@ Primitive& Primitive::buildBoundingBox()
                 boundingBox.pMax.z = std::max(boundingBox.pMax.z, pt.z);
             }
         }
-        LOG_PRINT_INFO(TAG, "bounding box min: x[%f], y[%f], z[%f]", boundingBox.pMin.x, boundingBox.pMin.y, boundingBox.pMin.z);
-        LOG_PRINT_INFO(TAG, "bounding box max: x[%f], y[%f], z[%f]", boundingBox.pMax.x, boundingBox.pMax.y, boundingBox.pMax.z);
     }
     return *this;
+}
+
+bool Primitive::rayCast(const Ray& ray, SurfaceIntersection& intersect) const
+{
+    return true;
 }
 
 PrimitivePtr PrimitiveBuilder::CreatePrimitive()
@@ -66,7 +68,6 @@ PrimitivePtr PrimitiveBuilder::CreatePrimitive()
     primitiveCache.emplace_back(PrimitivePtr(new Primitive(*this)));
     return primitiveCache.back();
 }
-
 
 }
 }

@@ -40,7 +40,12 @@ public:
     /**
      * If set bounding box, primitive will not update bounding box automatically.
     */
-    Primitive& buildBoundingBox();
+    Primitive& buildPrimitive();
+
+    /**
+     * check a ray is intersect with primitive
+     */
+    bool rayCast(const Ray& ray, SurfaceIntersection& intersect) const;
 
 protected:
     Primitive(PrimitiveBuilder& pb);

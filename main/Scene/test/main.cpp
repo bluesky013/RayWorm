@@ -114,7 +114,16 @@ TEST_F(SceneTest, GltfTest1) {
 
     Mesh mesh("");
     loader->instantiateMesh("", mesh);
+}
 
+TEST_F(SceneTest, RayTest1) {
+    Triangle triangle { glm::vec3(-1, 0, 0), glm::vec3(1, 0, 0), glm::vec3(0, 1, 0) };
+    SurfaceIntersection interSection;
+    glm::vec3 start(0, 0, -1);
+    glm::vec3 target(0, 0.5, 1);
+    bool rst = triangle.calculateRayIntersection(Ray { glm::vec3(0, 0, -1), glm::vec3(0, 0.8, 1) }, interSection);
+    EXPECT_EQ(rst, true);
+    EXPECT_EQ(interSection.hitPoint, glm::vec3(0, 0.8, 0));
 }
 
 int main(int argc, char **argv) {

@@ -157,7 +157,7 @@ bool GltfLoader::instantiateMesh(const std::string& name, Mesh& mesh)
 
         auto& accessor = model->accessors[attr.indices];
         prim->setIndices(createBuffer(*model, accessor))
-            .buildBoundingBox();
+            .buildPrimitive();
     }
 
     return true;
