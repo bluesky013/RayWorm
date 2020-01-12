@@ -1,10 +1,10 @@
-#ifndef RAYWORM_SINGLETON_H
-#define RAYWORM_SINGLETON_H
+#ifndef Worm_SINGLETON_H
+#define Worm_SINGLETON_H
 
 #include <stdexcept>
 #include <atomic>
 
-namespace RayWorm {
+namespace Worm {
 namespace Common {
 
 template<typename T>

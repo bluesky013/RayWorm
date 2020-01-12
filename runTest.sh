@@ -7,8 +7,13 @@ cd ${CommonTestDir}
 ./CommonTest
 cd ${Root}
 
-SceneTestDir=${Root}/build/main/Scene/test/Debug
+SceneTestDir=${Root}/build/main/SceneDesc/test/Debug
+AssetTestDir=${Root}/build/main/Asset/test/Debug
 
 cd ${SceneTestDir}
 ./SceneTest
+cd ${Root}
+
+cd ${AssetTestDir}
+./AssetTest
 cd ${Root}

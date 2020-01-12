@@ -1,15 +1,16 @@
-#ifndef RAY_BUFFER_H
-#define RAY_BUFFER_H
+#ifndef WORM_BUFFER_H
+#define WORM_BUFFER_H
 
 #include <RayBasic.h>
 #include <vector>
 #include <memory>
 #include <RaySingleton.h>
 
-namespace RayWorm {
-namespace Scene {
+namespace Worm {
+namespace Asset {
 class BufferBuilder;
-
+class Buffer;
+using BufferPtr = std::shared_ptr<Buffer>;
 using Memory = std::vector<uint8_t>;
 
 class Buffer {

@@ -3,7 +3,7 @@
 #include <RayTime.h>
 #include <ctime>
 
-namespace RayWorm {
+namespace Worm {
 namespace Common {
 
 std::string Time::getCurrentTime()

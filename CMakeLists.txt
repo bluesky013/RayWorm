@@ -9,8 +9,11 @@ set(RayRoot ${CMAKE_SOURCE_DIR})
 
 message("root" ${CMAKE_SOURCE_DIR})
 
-subdirs(main/Scene)
-subdirs(main/Scene/test)
+subdirs(main/SceneDesc)
+subdirs(main/SceneDesc/test)
 
 subdirs(main/Common)
 subdirs(main/Common/test)
+
+subdirs(main/Asset)
+subdirs(main/Asset/test)

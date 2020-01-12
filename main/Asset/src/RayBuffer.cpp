@@ -2,8 +2,8 @@
 #include <exception>
 #include <RayLog.h>
 
-namespace RayWorm {
-namespace Scene {
+namespace Worm {
+namespace Asset {
 
 Buffer::Buffer(BufferBuilder& fct, size_t size) : builder(fct)
 {

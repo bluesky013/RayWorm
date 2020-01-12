@@ -1,11 +1,11 @@
-#ifndef RAY_CAMERA_H
-#define RAY_CAMERA_H
+#ifndef WORM_CAMERA_H
+#define WORM_CAMERA_H
 
 #include <vector>
 #include <RayNode.h>
 #include <RayBasic.h>
 
-namespace RayWorm {
+namespace Worm {
 namespace Scene {
 
 class Camera : public Node {

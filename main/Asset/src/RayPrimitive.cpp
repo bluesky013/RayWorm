@@ -1,10 +1,10 @@
 
 #include <RayPrimitive.h>
-#include <RayDebug.h>
+#include <RayLog.h>
 #include <algorithm>
 
-namespace RayWorm {
-namespace Scene {
+namespace Worm {
+namespace Asset {
 namespace {
 const std::string TAG = "[Primitive]";
 
@@ -39,28 +39,13 @@ Primitive& Primitive::buildPrimitive()
             for (size_t i = 0; i < vtx.size();i+=accessor->count) {
                 glm::vec3 pt = glm::vec3(vtx[i], vtx[i + 1], vtx[i + 2]);
                 if (first) {
-                    boundingBox.pMin = pt;
-                    boundingBox.pMax = pt;
                     first = false;
                     continue;
                 }
-
-                boundingBox.pMin.x = std::min(boundingBox.pMin.x, pt.x);
-                boundingBox.pMin.y = std::min(boundingBox.pMin.y, pt.y);
-                boundingBox.pMin.z = std::min(boundingBox.pMin.z, pt.z);
-
-                boundingBox.pMax.x = std::max(boundingBox.pMax.x, pt.x);
-                boundingBox.pMax.y = std::max(boundingBox.pMax.y, pt.y);
-                boundingBox.pMax.z = std::max(boundingBox.pMax.z, pt.z);
             }
         }
     }
     return *this;
-}
-
-bool Primitive::rayCast(const Ray& ray, SurfaceIntersection& intersect) const
-{
-    return true;
 }
 
 PrimitivePtr PrimitiveBuilder::CreatePrimitive()

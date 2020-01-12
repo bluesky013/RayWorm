@@ -1,11 +1,12 @@
-#ifndef RAY_MESH_H
-#define RAY_MESH_H
+#ifndef WORM_MESH_H
+#define WORM_MESH_H
 
 #include <RayBasic.h>
 #include <RayNode.h>
+#include <RayPrimitive.h>
 #include <vector>
 
-namespace RayWorm {
+namespace Worm {
 namespace Scene {
 
 class Mesh : public Node {
@@ -13,10 +14,10 @@ public:
     Mesh(const std::string& name) : Node(name) {}
     ~Mesh() {}
 
-    void addPrimitive(PrimitivePtr primitive);
+    void addPrimitive(Asset::PrimitivePtr primitive);
 
 private:
-    std::vector<PrimitivePtr> primitives;
+    std::vector<Asset::PrimitivePtr> primitives;
 };
 
 }

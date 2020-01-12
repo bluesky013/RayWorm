@@ -1,17 +1,17 @@
-#ifndef RAY_GEOMETRY_H
-#define RAY_GEOMETRY_H
+#ifndef WORM_GEOMETRY_H
+#define WORM_GEOMETRY_H
 
-#include <RayBasic.h>
 #include <glm/glm.hpp>
 #include <vector>
-#include <RayShape.h>
 #include <RaySingleton.h>
 #include <RayBuffer.h>
 
-namespace RayWorm {
-namespace Scene {
+namespace Worm {
+namespace Asset {
 class PrimitiveBuilder;
 struct BufferAccessor;
+class Primitive;
+using PrimitivePtr = std::shared_ptr<Primitive>;
 
 class Primitive {
 public:
@@ -42,11 +42,6 @@ public:
     */
     Primitive& buildPrimitive();
 
-    /**
-     * check a ray is intersect with primitive
-     */
-    bool rayCast(const Ray& ray, SurfaceIntersection& intersect) const;
-
 protected:
     Primitive(PrimitiveBuilder& pb);
     ~Primitive() {}
@@ -59,7 +54,6 @@ private:
     PrimitiveBuilder& builder;
     std::vector<BufferAccessorPtr> attributes;
     BufferAccessorPtr indices;
-    Box boundingBox;
 };
 
 class PrimitiveBuilder : public Common::Singleton<PrimitiveBuilder> {

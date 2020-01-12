@@ -4,7 +4,7 @@
 #include "SingletonTest.h"
 #include <RayLog.h>
 
-namespace RayWorm {
+namespace Worm {
 namespace Common {
 
 void SingletonTest::testValue(size_t& t)
@@ -15,7 +15,7 @@ void SingletonTest::testValue(size_t& t)
 }
 }
 
-using namespace RayWorm::Common;
+using namespace Worm::Common;
 class CommonTest : public ::testing::Test {
 protected:
     CommonTest() {}

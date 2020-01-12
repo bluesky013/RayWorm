@@ -1,8 +1,9 @@
 #include <RayMesh.h>
 
 
-namespace RayWorm {
+namespace Worm {
 namespace Scene {
+using namespace Asset;
 
 void Mesh::addPrimitive(PrimitivePtr primitive)
 {

@@ -3,10 +3,10 @@
 #include <RayLoader.h>
 #include <GltfLoader.h>
 #include <tiny_gltf.h>
-#include <RayDebug.h>
+#include <RayLog.h>
 
-namespace RayWorm {
-namespace Scene {
+namespace Worm {
+namespace Asset {
 namespace {
 
 const std::string TAG = "Loader";

@@ -1,9 +1,9 @@
 
 
 #include <RayShape.h>
-#include <RayDebug.h>
+#include <RayLog.h>
 
-namespace RayWorm {
+namespace Worm {
 namespace Scene {
 namespace {
 const std::string TAG = "[Shape]";
@@ -94,6 +94,7 @@ bool Triangle::calculateRayIntersection(const Ray& ray, SurfaceIntersection& int
     Real t = tScale * invDet;
 
     intersection.hitPoint = b0 * p0 + b1 * p1 + b2 * p2;
+    intersection.uv = b0 * uv0 + b1 * uv1 + b2 * uv2;
 
     return true;
 }

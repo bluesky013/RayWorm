@@ -6,17 +6,16 @@
 #include <tiny_gltf.h>
 #include <algorithm>
 
-#include <RayMesh.h>
 #include <RayPrimitive.h>
 #include <RayBuffer.h>
-#include <RayDebug.h>
+#include <RayLog.h>
 
 #include <iostream>
 
 using namespace tinygltf;
 
-namespace RayWorm {
-namespace Scene {
+namespace Worm {
+namespace Asset {
 namespace {
 const std::string TAG = "[GltfLoader]";
 
@@ -120,7 +119,7 @@ bool GltfLoader::load(const std::string& url, const std::string& ext)
 
     return result;
 }
-
+/*
 bool GltfLoader::instantiateMesh(const std::string& name, Mesh& mesh)
 {
     if (!model) {
@@ -151,7 +150,7 @@ bool GltfLoader::instantiateMesh(const std::string& name, Mesh& mesh)
         for (auto acc : attr.attributes) {
             auto& accessor = model->accessors[acc.second];
 
-            /* add attribute */
+            // add attribute
             prim->setAttribute(getAttributeType(acc.first), createBuffer(*model, accessor));
         }
 
@@ -161,7 +160,7 @@ bool GltfLoader::instantiateMesh(const std::string& name, Mesh& mesh)
     }
 
     return true;
-}
+}*/
 
 
 }

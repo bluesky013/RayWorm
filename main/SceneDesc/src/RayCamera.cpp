@@ -3,7 +3,7 @@
 #include <RayCamera.h>
 
 
-namespace RayWorm {
+namespace Worm {
 namespace Scene {
 
 glm::mat4 Camera::getProjectMatrix() const

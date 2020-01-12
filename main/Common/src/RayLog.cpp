@@ -5,7 +5,7 @@
 
 #include <RayTime.h>
 
-namespace RayWorm {
+namespace Worm {
 namespace Common {
 namespace {
 

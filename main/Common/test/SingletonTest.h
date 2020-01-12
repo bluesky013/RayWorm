@@ -3,7 +3,7 @@
 
 #include <RaySingleton.h>
 
-namespace RayWorm {
+namespace Worm {
 namespace Common {
 
 class SingletonTest : public Singleton<SingletonTest> {

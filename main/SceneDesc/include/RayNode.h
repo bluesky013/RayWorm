@@ -1,5 +1,5 @@
-#ifndef RAY_NODE_H
-#define RAY_NODE_H
+#ifndef WORM_NODE_H
+#define WORM_NODE_H
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace RayWorm {
+namespace Worm {
 namespace Scene {
 
 class Node {

@@ -1,7 +1,7 @@
 
 #include <RayNode.h>
 
-namespace RayWorm {
+namespace Worm {
 namespace Scene {
 
 void Node::addChild(Node& node)

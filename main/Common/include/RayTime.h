@@ -1,10 +1,10 @@
 
-#ifndef RAYWORM_TIME_H
-#define RAYWORM_TIME_H
+#ifndef Worm_TIME_H
+#define Worm_TIME_H
 
 #include <string>
 
-namespace RayWorm {
+namespace Worm {
 namespace Common {
 
 class Time {
