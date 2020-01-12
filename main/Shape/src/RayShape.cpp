@@ -4,7 +4,7 @@
 #include <RayLog.h>
 
 namespace Worm {
-namespace Scene {
+namespace Shape {
 namespace {
 const std::string TAG = "[Shape]";
 uint32_t maxDimension(const glm::vec3 &v)

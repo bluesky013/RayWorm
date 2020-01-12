@@ -17,3 +17,6 @@ subdirs(main/Common/test)
 
 subdirs(main/Asset)
 subdirs(main/Asset/test)
+
+subdirs(main/Shape)
+subdirs(main/Shape/test)

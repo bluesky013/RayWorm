@@ -13,7 +13,6 @@ include_directories(src)
 set(SceneDescSrc
     src/RayNode.cpp
     src/RayCamera.cpp
-    src/RayShape.cpp
     src/RayMesh.cpp
     src/RayScene.cpp
 )

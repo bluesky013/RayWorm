@@ -5,7 +5,7 @@
 #include <RayBasic.h>
 
 namespace Worm {
-namespace Scene {
+namespace Shape {
 
 struct Ray {
     glm::vec3 origin;
