@@ -19,7 +19,7 @@ glm::vec3 permute(const glm::vec3& v, uint32_t kx, uint32_t ky, uint32_t kz)
 }
 }
 
-Ray::Ray(const glm::vec3& o, const glm::vec3& d) : origin(o), direction(d)
+Ray::Ray(const glm::vec3& o, const glm::vec3& d) : origin(o), direction(glm::normalize(d))
 {
     kz = maxDimension(glm::abs(direction));
     kx = kz + 1; if (kx == 3) kx = 0;
@@ -30,7 +30,7 @@ Ray::Ray(const glm::vec3& o, const glm::vec3& d) : origin(o), direction(d)
     sz = 1 / p.z;
 }
 
-bool Box::overlaps(const Box& rhs) const
+bool Bounding::overlaps(const Bounding& rhs) const
 {
     bool x = (pMax.x >= rhs.pMin.x) && (pMax.x <= rhs.pMax.x);
     bool y = (pMax.y >= rhs.pMin.y) && (pMax.x <= rhs.pMax.y);
@@ -38,12 +38,17 @@ bool Box::overlaps(const Box& rhs) const
     return x && y && z;
 }
 
-bool Box::isInside(const glm::vec3& pt) const
+bool Bounding::isInside(const glm::vec3& pt) const
 {
     bool x = pt.x >= pMin.x && pt.x <= pMax.x;
     bool y = pt.y >= pMin.y && pt.y <= pMax.y;
     bool z = pt.z >= pMin.z && pt.z <= pMax.z;
     return x && y && z;
+}
+
+Triangle::Triangle(const glm::vec3& p0t, const glm::vec3& p1t, const glm::vec3& p2t) : p0(p0t), p1(p1t), p2(p2t)
+{
+    normal = glm::cross(p0 - p1, p0 - p2);
 }
 
 bool Triangle::calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection)
@@ -94,9 +99,42 @@ bool Triangle::calculateRayIntersection(const Ray& ray, SurfaceIntersection& int
     Real t = tScale * invDet;
 
     intersection.hitPoint = b0 * p0 + b1 * p1 + b2 * p2;
-    intersection.uv = b0 * uv0 + b1 * uv1 + b2 * uv2;
+    intersection.normal = normal;
 
     return true;
+}
+
+Sphere::Sphere(const glm::mat4& worldTrans, Real r)
+    : transform(worldTrans), radius(r)
+{
+
+}
+
+Bounding Sphere::getLocalBounding()
+{
+    glm::vec3 center(transform[3][0], transform[3][1], transform[3][2]);
+    return Bounding(center - radius, center + radius);
+}
+
+Bounding Sphere::getWorldBounding()
+{
+    return Bounding(glm::vec3(-radius, -radius, -radius), glm::vec3(radius, radius, radius));
+}
+
+bool Sphere::calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection)
+{
+    return true;
+}
+
+Plane::Plane(const glm::mat4& worldTrans, const glm::vec3& nm, Real ext)
+    : transform(worldTrans), normal(nm), extent(ext)
+{
+
+}
+
+bool Plane::calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection)
+{
+    return false;
 }
 
 }

@@ -16,11 +16,11 @@ protected:
 };
 
 
-TEST_F(ShapeTest, ShapeTest1) {
-    Box box1(glm::vec3(-1.f, -1.f, -1.f), glm::vec3(0.f, 0.f, 0.f));
-    Box box2(glm::vec3( 0.1f, 0.1f, 0.1f), glm::vec3(1.f, 1.f, 1.f));
-    Box box3(glm::vec3(-0.5f,-0.5f,-0.5f), glm::vec3(0.5f, 0.5f, 0.5f));
-    Box box4(glm::vec3(-1.f,-1.0f,-0.5f), glm::vec3(1.f, 1.f, 1.f));
+TEST_F(ShapeTest, BoundingTest1) {
+    Bounding bounding1(glm::vec3(-1.f, -1.f, -1.f), glm::vec3(0.f, 0.f, 0.f));
+    Bounding bounding2(glm::vec3( 0.1f, 0.1f, 0.1f), glm::vec3(1.f, 1.f, 1.f));
+    Bounding bounding3(glm::vec3(-0.5f,-0.5f,-0.5f), glm::vec3(0.5f, 0.5f, 0.5f));
+    Bounding bounding4(glm::vec3(-1.f,-1.0f,-0.5f), glm::vec3(1.f, 1.f, 1.f));
     glm::vec3 pt1 = { -1.f, -1.f, -1.f };
     glm::vec3 pt2 = {-0.5f,-0.5f,-0.5f };
     glm::vec3 pt3 = { 1.0f, 0.0f, 0.0f };
@@ -31,19 +31,19 @@ TEST_F(ShapeTest, ShapeTest1) {
     glm::vec3 pt8 = { 0.0f, 0.0f,-1.0f };
     glm::vec3 pt9 = { 1.f, 1.f, 1.f };
 
-    EXPECT_EQ(box1.overlaps(box2), false);
-    EXPECT_EQ(box1.overlaps(box3), true);
-    EXPECT_EQ(box1.overlaps(box4), true);
+    EXPECT_EQ(bounding1.overlaps(bounding2), false);
+    EXPECT_EQ(bounding1.overlaps(bounding3), true);
+    EXPECT_EQ(bounding1.overlaps(bounding4), true);
 
-    EXPECT_EQ(box1.isInside(pt1), true);
-    EXPECT_EQ(box1.isInside(pt2), true);
-    EXPECT_EQ(box1.isInside(pt3), false);
-    EXPECT_EQ(box1.isInside(pt4), true);
-    EXPECT_EQ(box1.isInside(pt5), false);
-    EXPECT_EQ(box1.isInside(pt6), true);
-    EXPECT_EQ(box1.isInside(pt7), false);
-    EXPECT_EQ(box1.isInside(pt8), true);
-    EXPECT_EQ(box1.isInside(pt9), false);
+    EXPECT_EQ(bounding1.isInside(pt1), true);
+    EXPECT_EQ(bounding1.isInside(pt2), true);
+    EXPECT_EQ(bounding1.isInside(pt3), false);
+    EXPECT_EQ(bounding1.isInside(pt4), true);
+    EXPECT_EQ(bounding1.isInside(pt5), false);
+    EXPECT_EQ(bounding1.isInside(pt6), true);
+    EXPECT_EQ(bounding1.isInside(pt7), false);
+    EXPECT_EQ(bounding1.isInside(pt8), true);
+    EXPECT_EQ(bounding1.isInside(pt9), false);
 
 }
 
@@ -69,7 +69,6 @@ TEST_F(ShapeTest, RayTest3) {
     bool rst = triangle.calculateRayIntersection(Ray { glm::vec3(0, 0, -1), glm::vec3(0.5, 0.5, 1) }, interSection);
     EXPECT_EQ(rst, true);
     EXPECT_EQ(interSection.hitPoint, glm::vec3(0.5f, 0.5f, 0.f));
-    EXPECT_EQ(interSection.uv, glm::vec2(0.5f, 0.5f));
 }
 
 int main(int argc, char **argv) {

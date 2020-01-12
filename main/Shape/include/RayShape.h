@@ -27,50 +27,93 @@ struct SurfaceIntersection {
     glm::vec2 uv;
 };
 
-struct Shape {
-    virtual bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection) = 0;
-};
+class Bounding {
+public:
+    Bounding() : pMin(glm::vec3(0, 0, 0)), pMax(glm::vec3(0, 0, 0)) {}
 
-struct Box : public Shape {
-    glm::vec3 pMin;
-    glm::vec3 pMax;
+    Bounding(const glm::vec3& min, const glm::vec3& max) : pMin(min), pMax(max) {}
 
-    Box() : pMin(glm::vec3(0, 0, 0)), pMax(glm::vec3(0, 0, 0)) {}
-
-    Box(const glm::vec3& min, const glm::vec3& max) : pMin(min), pMax(max) {}
-
-    bool overlaps(const Box& rhs) const;
+    bool overlaps(const Bounding& rhs) const;
 
     bool isInside(const glm::vec3& pt) const;
 
-    bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection) override
+    void update(const glm::vec3& min, const glm::vec3& max)
     {
-        return false;
+        pMin = min;
+        pMax = max;
     }
+
+private:
+    glm::vec3 pMin;
+    glm::vec3 pMax;
 };
 
-struct Triangle : public Shape {
+class Shape {
+public:
+    virtual bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection) = 0;
+
+    virtual Bounding getLocalBounding() = 0;
+
+    virtual Bounding getWorldBounding() = 0;
+};
+
+class Triangle : public Shape {
+public:
+    Triangle(const glm::vec3& p0t, const glm::vec3& p1t, const glm::vec3& p2t);
+
+    bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection) override;
+
+protected:
+    Bounding getLocalBounding() override {
+        return Bounding();
+    }
+
+    Bounding getWorldBounding() override {
+        return Bounding();
+    }
+
+private:
     glm::vec3 p0;
     glm::vec3 p1;
     glm::vec3 p2;
-
-    glm::vec2 uv0 = glm::vec2(0, 0);
-    glm::vec2 uv1 = glm::vec2(1, 0);
-    glm::vec2 uv2 = glm::vec2(1, 1);
-
-    Triangle(const glm::vec3& p0t, const glm::vec3& p1t, const glm::vec3& p2t) : p0(p0t), p1(p1t), p2(p2t) {}
-
-    bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection);
+    glm::vec3 normal;
 };
 
-struct Sphere : public Shape  {
-    glm::vec3 center;
-    Real radius;
+class Sphere : public Shape  {
+public:
+    Sphere(const glm::mat4& worldTrans, Real r);
 
-    bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection) override
-    {
-        return false;
+    bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection) override;
+
+protected:
+    Bounding getLocalBounding() override;
+
+    Bounding getWorldBounding() override;
+
+private:
+    glm::mat4 transform;
+    Real radius;
+};
+
+class Plane : public Shape {
+public:
+    Plane(const glm::mat4& worldTrans, const glm::vec3& nm, Real ext = 1.0f);
+
+    bool calculateRayIntersection(const Ray& ray, SurfaceIntersection& intersection) override;
+
+protected:
+    Bounding getLocalBounding() override {
+        return Bounding();
     }
+
+    Bounding getWorldBounding() override {
+        return Bounding();
+    }
+
+private:
+    glm::mat4 transform;
+    glm::vec3 normal;
+    Real extent;
 };
 
 
